@@ -1,4 +1,6 @@
 require_relative 'env'
+require 'rubygems'
+require 'bundler/setup'
 require 'sinatra'
 require 'rest-client'
 require 'httparty'
