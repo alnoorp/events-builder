@@ -11,7 +11,7 @@ class MySinatraApp < Sinatra::Base
   CLIENT_ID = ENV['CLIENT_ID']
   CLIENT_SECRET = ENV['CLIENT_SECRET']
   REDIRECT_URI = 'http://localhost:9292/oauth/callback' if Sinatra::Base.development?
-  REDIRECT_URI = 'https://mysterious-atoll-9171.herokuapp.com/oauth/callback' if Sinatra::Base.production?
+  REDIRECT_URI = 'https://events-builder.herokuapp.com/oauth/callback' if Sinatra::Base.production?
 
   get '/' do
     erb :index, locals: {
