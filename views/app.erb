@@ -7,7 +7,7 @@
         <div class='col-md-4'>
           <div class='form-group'>
             <label for='event_name'>Event Name</label>
-            <input type='text' name='event_name' id='event_name' placeholder="event_xyz" required>
+            <input class='form-control' type='text' name='event_name' id='event_name' placeholder="event_xyz" required>
           </div>
         </div>
       </div>
@@ -28,7 +28,7 @@
         <div class='col-md-4'>
           <div class='form-group'>
             <label for='revenue'>Revenue</label>
-            <input type='number' name='revenue' id='revenue'>
+            <input class='form-control' type='number' name='revenue' id='revenue'>
           </div>
         </div>
       </div>
@@ -40,7 +40,8 @@
         <div class='form-group'>
           <div class='col-md-4'>
             <label for='key'>Property 1</label>
-            <select class='form-control' name='key' id='key'>
+            <select class='form-control' name='key' id='key' onchange="myFunction()">
+              <option value=''>(no property)</option>
               <% properties_data.each do |key,value| %>
                 <option value='<%= value %>'><%= key %></option>
               <% end %>
@@ -48,14 +49,14 @@
           </div>
           <div class='col-md-2'>
             <label for='value'>Value</label>
-            <input type='text' name='value' id='value' placeholder='alphanumeric'>
+            <input class='form-control' type='text' name='value' id='value' placeholder='alphanumeric'>
           </div>
         </div>
       </div>
       <br>
       <div class='row'>
         <div class='col-md-2'>
-          <input type="submit" value="Submit">
+          <input class='btn btn-primary' type="submit" value="Submit">
         </div>
       </div>
     </form>
@@ -90,6 +91,12 @@
       document.getElementById('revenue').disabled = false;
       document.getElementById('key').disabled = false;
       document.getElementById('value').disabled = false;
+    }
+    if(document.getElementById('key').value == '') {
+      document.getElementById('value').disabled = true;
+    } else {
+      document.getElementById('value').disabled = false;
+      document.getElementById('value').required = true;
     }
   }
 
