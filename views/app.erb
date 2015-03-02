@@ -15,7 +15,7 @@
         <div class='col-md-4'>
           <div class='form-group'>
             <label for='email'>Email</label>
-            <select class='form-control' name='email' id='email'>
+            <select class='form-control' name='email' id='email' onchange="myFunction()">
                 <option value=''>(no contact)</option>
               <% contacts_data_array.each do |item| %>
                 <option value="<%= item['email'] %>"><%= item['label'] %></option>
@@ -79,6 +79,19 @@
   document.getElementById('revenue').value = '<%= params[:revenue] %>';
   document.getElementById('key').value = '<%= params[:key] %>';
   document.getElementById('value').value = '<%= params[:value] %>';
+
+  function myFunction(){
+    if(document.getElementById('email').value == '') {
+      document.getElementById('revenue').disabled = true;
+      document.getElementById('key').disabled = true;
+      document.getElementById('value').disabled = true;
+    } else {
+      document.getElementById('revenue').disabled = false;
+      document.getElementById('key').disabled = false;
+      document.getElementById('value').disabled = false;
+    }
+  }
+
   var event_name = document.getElementById('event_name').value;
   var email_form = document.getElementById('email').value;
   var revenue_form = document.getElementById('revenue').value;
@@ -109,4 +122,5 @@
   }
   document.getElementById('url').href = url;
   document.getElementById('url').innerText = url;
+  window.onload = myFunction();
 </script>
