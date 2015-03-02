@@ -103,7 +103,7 @@ class MySinatraApp < Sinatra::Base
     properties_output = JSON.parse(properties)
     properties_data = {}
     properties_output.each do |item|
-      properties_data[item['label']] = item['name']
+      properties_data[item['label']] = item['name'] if item['formField']
     end
 
     erb :app, locals: {

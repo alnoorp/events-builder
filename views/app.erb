@@ -97,7 +97,7 @@
   } else {
     var revenue = '';
   }
-  if('<%= params[:key] %>' != '' && '<%= params[:value] %>' != '' ) {
+  if('<%= params[:key] %>' != '' && '<%= params[:value] %>' != '' && '<%= params[:email] %>' != '') {
     var key_value = '&<%= params[:key] %>=<%= params[:value] %>';
   } else {
     var key_value = '';
