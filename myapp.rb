@@ -33,24 +33,28 @@ class MySinatraApp < Sinatra::Base
   end
 
   get '/contacts' do
-    contacts = RestClient.get 'http://api.hubapi.com/contacts/v1/lists/all/contacts/all',
+    RestClient.get 'http://api.hubapi.com/contacts/v1/lists/all/contacts/all',
+      params: { access_token: ACCESS_TOKEN }, content_type: 'application/json'
+  end
+
+  get '/updated' do
+    RestClient.get 'https://api.hubapi.com/contacts/v1/lists/recently_updated/contacts/recent',
       params: { access_token: ACCESS_TOKEN }, content_type: 'application/json'
   end
 
   get '/blogs' do
-    blogs = RestClient.get 'https://api.hubapi.com/content/api/v2/blogs',
+    RestClient.get 'https://api.hubapi.com/content/api/v2/blogs',
       params: { access_token: ACCESS_TOKEN }, content_type: 'application/json'
   end
 
   get '/workflows' do
-    url = 'https://api.hubapi.com/automation/v2/workflows/?hapikey=demo'
-    workflows = RestClient.get url
-    # workflows = RestClient.get 'https://api.hubapi.com/automation/v2/workflows',
-    #   params: { access_token: ACCESS_TOKEN }, content_type: 'application/json'
+    RestClient.get 'https://api.hubapi.com/automation/v2/workflows',
+      params: { access_token: ACCESS_TOKEN }, content_type: 'application/json'
   end
 
-  get '/updated' do
-    updated = RestClient.get 'https://api.hubapi.com/contacts/v1/lists/recently_updated/contacts/recent?hapikey=demo'
+  get '/properties' do
+    RestClient.get 'https://api.hubapi.com/contacts/v1/properties',
+      params: { access_token: ACCESS_TOKEN }, content_type: 'application/json'
   end
 
   get '/app' do
