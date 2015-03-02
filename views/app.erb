@@ -1,0 +1,112 @@
+<div class='row'>
+  <div class='col-md-12'>
+  <h1>Events URL Builder</h1>
+  <br>
+    <form method='get' action=''>
+      <div class='row'>
+        <div class='col-md-4'>
+          <div class='form-group'>
+            <label for='event_name'>Event Name</label>
+            <input type='text' name='event_name' id='event_name' placeholder="event_xyz" required>
+          </div>
+        </div>
+      </div>
+      <div class='row'>
+        <div class='col-md-4'>
+          <div class='form-group'>
+            <label for='email'>Email</label>
+            <select class='form-control' name='email' id='email'>
+                <option value=''>(no contact)</option>
+              <% contacts_data_array.each do |item| %>
+                <option value="<%= item['email'] %>"><%= item['label'] %></option>
+              <% end %>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class='row'>
+        <div class='col-md-4'>
+          <div class='form-group'>
+            <label for='revenue'>Revenue</label>
+            <input type='number' name='revenue' id='revenue'>
+          </div>
+        </div>
+      </div>
+<!--       <div class='form-group'>
+        <label for='email'>Email</label>
+        <input type='email' name='email_2' id='email_2' placeholder='example@gmail.com'>
+      </div> -->
+      <div class='row'>
+        <div class='form-group'>
+          <div class='col-md-4'>
+            <label for='key'>Property 1</label>
+            <select class='form-control' name='key' id='key'>
+              <% properties_data.each do |key,value| %>
+                <option value='<%= value %>'><%= key %></option>
+              <% end %>
+            </select>
+          </div>
+          <div class='col-md-2'>
+            <label for='value'>Value</label>
+            <input type='text' name='value' id='value' placeholder='alphanumeric'>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class='row'>
+        <div class='col-md-2'>
+          <input type="submit" value="Submit">
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<br>
+<div class='row'>
+  <div class='col-md-8'>
+    <a id='url' href=''></a>
+  </div>
+</div>
+<br>
+<div class='row'>
+  <div class='col-md-4'>
+    <input type="submit" value="Trigger"> <input type="submit" value="Save">
+  </div>
+</div>
+<script type="text/javascript">
+  document.getElementById('event_name').value = '<%= params[:event_name] %>';
+  document.getElementById('email').value = '<%= params[:email] %>';
+  document.getElementById('revenue').value = '<%= params[:revenue] %>';
+  document.getElementById('key').value = '<%= params[:key] %>';
+  document.getElementById('value').value = '<%= params[:value] %>';
+  var event_name = document.getElementById('event_name').value;
+  var email_form = document.getElementById('email').value;
+  var revenue_form = document.getElementById('revenue').value;
+  if(event_name != '' || undefined) {
+    var event_name_label = '?_n=' + event_name
+  } else {
+    var event_name_label = '';
+  }
+  if(email_form != '' || undefined) {
+    var email = '&email=' + email_form;
+  } else {
+    var email = '';
+  }
+  if(revenue_form != '' && email_form != '') {
+    var revenue = '&_m=' + revenue_form;
+  } else {
+    var revenue = '';
+  }
+  if('<%= params[:key] %>' != '' && '<%= params[:value] %>' != '' ) {
+    var key_value = '&<%= params[:key] %>=<%= params[:value] %>';
+  } else {
+    var key_value = '';
+  }
+  if(event_name == '') {
+    var url = '';
+  } else {
+    var url = 'http://track.hubspot.com/v1/event' + event_name_label + '&_a=<%= portal_id %>' + revenue + key_value + email;
+  }
+  document.getElementById('url').href = url;
+  document.getElementById('url').innerText = url;
+</script>

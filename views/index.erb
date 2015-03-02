@@ -1,0 +1,16 @@
+<div class='row'>
+  <div class='col-md-12'>
+  <h1>Event URL Builder</h1>
+  <h3>Login</h3>
+  <br>
+  <p>
+    <form class='form-inline' method='get' action='https://app.hubspot.com/auth/authenticate'>
+      <label for='portalId'>Portal ID</label>
+      <input type='hidden' name='client_id' id='client_id' value='<%= client_id %>'>
+      <input type='text' name='portalId' id='portalId' value='377377'>
+      <input type='hidden' name='redirect_uri' id='redirect_uri' value='<%= redirect_uri %>'>
+      <input type='hidden' name='scope' id='scope' value='contacts-rw blog-rw offline'>
+      <input type='submit' value='Submit'>
+    </form>
+  </div>
+</div>
