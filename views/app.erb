@@ -12,7 +12,7 @@
         </div>
         <div class='col-md-2'>
         </div>
-        <div class='col-md-4'>
+        <div class='col-md-6'>
           <div>
             <p>Enter a name for your event. Alphanumeric characters are accepted (no spaces)</p>
           </div>
@@ -32,7 +32,7 @@
         </div>
         <div class='col-md-2'>
         </div>
-        <div class='col-md-4'>
+        <div class='col-md-6'>
           <div>
             <p>If you would like the event associated with a contact, select one from the dropdown.</p>
           </div>
@@ -47,7 +47,7 @@
         </div>
         <div class='col-md-2'>
         </div>
-        <div class='col-md-4'>
+        <div class='col-md-6'>
           <div>
             <p>If you wish to associated a revenue value with this event enter a value. The Revenue amount for the selected contact will be incremented by this value.</p>
           </div>
@@ -72,7 +72,7 @@
             <label for='value'>Value</label>
             <input class='form-control' type='text' name='value' id='value' placeholder='alphanumeric'>
           </div>
-          <div class='col-md-4'>
+          <div class='col-md-6'>
             <div>
               <p>If you wish to update a contact property value when the event is triggered, select a property from the dropdown and enter a value in the text box.</p>
             </div>
@@ -81,10 +81,15 @@
       </div>
       <br>
       <div class='row'>
-        <div class='col-md-2'>
+        <div class='col-md-6'>
           <input class='btn btn-primary' type="submit" value="Submit">
         </div>
       </div>
+      <div class='col-md-6'>
+        <div>
+          <p>Click submit and your URL will be displayed below. Click on the link to trigger the event and visit your <a href="https://app.hubspot.com/reports/<%= portal_id %>/events/">Events Dashboard</a> to verify that it's been fired. Note that a new event will be created within a minute but it will take at least 3 hours to show a completion on the Events Dashboard.</p>
+        </div>
+      </div> 
     </form>
   </div>
 </div>
