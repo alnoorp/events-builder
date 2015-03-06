@@ -1,11 +1,19 @@
 <div class='row'>
   <div class='col-md-12'>
   <h1>HTTP Events URL Builder</h1>
+  <div>
+    <p>
+      HubSpot HTTP <a href='http://developers.hubspot.com/docs/methods/enterprise_events/http_api'>Events</a> allow you to track user activity in your web or mobile app either anonymously or associated with a specific contact. When a contact email address is included in the event, their activities can also trigger automation in HubSpot including adding the contact to a list, updating their lead score, incrementing a lifetime revenue field and sending nurturing emails around those activities.
+    </p>
+    <p>
+      This app allows you to interactively build HTTP Event URLs from data in your HubSpot instance and test the associated actions by triggering these events inside the app. To get started, enter your Hub ID below and click Authenticate.
+    </p>
+  </div>
   <h3>Authentication</h3>
   <br>
   <p>
     <form class='form-inline' method='get' action='https://app.hubspot.com/auth/authenticate'>
-      <label for='portalId'>Portal ID</label>
+      <label for='portalId'>Hub ID</label>
       <input type='hidden' name='client_id' id='client_id' value='<%= client_id %>'>
       <input class='form-control' type='text' name='portalId' id='portalId' required>
       <input type='hidden' name='redirect_uri' id='redirect_uri' value='<%= redirect_uri %>'>
