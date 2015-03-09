@@ -48,7 +48,7 @@ class MySinatraApp < Sinatra::Base
     vid_offset = '0'
     contacts_data_array = []
 
-    until has_more == false
+    # until has_more == false
 
     contacts = RestClient.get 'http://api.hubapi.com/contacts/v1/lists/all/contacts/all',
       params: { access_token: ACCESS_TOKEN, vidOffset: vid_offset }, content_type: 'application/json'
@@ -81,7 +81,7 @@ class MySinatraApp < Sinatra::Base
         contacts_data_array << contacts_data
       end
 
-    end
+    # end
 
     properties = RestClient.get 'https://api.hubapi.com/contacts/v1/properties',
       params: { access_token: ACCESS_TOKEN }, content_type: 'application/json'
